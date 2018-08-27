@@ -166,7 +166,8 @@ class MenuController
     print "Updated email: "
     email = gets.chomp
     updates[:email] = email unless email.empty?
-
+#     people = { 1 => { "name" => "David" }, 2 => { "name" => "Jeremy" } }
+#    entry.class.update(people.keys, people.values)
     entry.update_attributes(updates)
     system "clear"
     puts "Updated entry:"
