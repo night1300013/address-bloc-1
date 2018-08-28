@@ -171,7 +171,8 @@ class MenuController
     entry.update_attributes(updates)
     system "clear"
     puts "Updated entry:"
-    puts Entry.find(entry.id)
+    puts "#{Entry.find(entry.id)}"
+    gets
   end
 
   def search_submenu(entry)
