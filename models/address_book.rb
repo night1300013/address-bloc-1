@@ -3,23 +3,24 @@ require "csv"
 require 'bloc_record/base'
 
 class AddressBook < BlocRecord::Base
+  has_many :entries
 
-  def initialize(options={})
-    super
-    @entries = []
-  end
+  # def initialize(options={})
+  #   super
+  #   @entries = []
+  # end
 
   def add_entry(name, phone_number, email)
     Entry.create(name: name, phone_number: phone_number, email: email, address_book_id: self.id)
   end
 
-  def entries
-    Entry.where(address_book_id: self.id)
-    # Entry.order(:name, phone_number: :desc)
-    # Entry.order(name: :asc, phone_number: :desc)
-    # Entry.order("name ASC, phone_number DESC")
-    # Entry.order("name ASC", "phone_number DESC")
-  end
+  # def entries
+  #   Entry.where(address_book_id: self.id)
+  #   # Entry.order(:name, phone_number: :desc)
+  #   # Entry.order(name: :asc, phone_number: :desc)
+  #   # Entry.order("name ASC, phone_number DESC")
+  #   # Entry.order("name ASC", "phone_number DESC")
+  # end
 
   def find_entry(name)
     Entry.where(name: name, address_book_id: self.id).first
